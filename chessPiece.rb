@@ -2,7 +2,10 @@ class ChessPiece
 	attr_accessor :position_x, :position_y
 	attr_reader :pos
 
+	@@instance_collector = []
+
 	def initialize(x,y)
+		@@instance_collector << self
 		@position_x, @position_y = x, y
 	end
 
@@ -18,5 +21,9 @@ class ChessPiece
 			puts "Please select a valid move."
 		end
 	end
+
+  def self.all_offspring
+    @@instance_collector
+  end
 
 end
